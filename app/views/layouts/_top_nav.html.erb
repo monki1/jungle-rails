@@ -57,6 +57,7 @@
           <ul class="dropdown-menu dropdown-menu-dark">
             <li><%= link_to 'Dashboard', [:admin, :root], class: "nav-link" %></li>
             <li><%= link_to 'Products', [:admin, :products], class: "nav-link" %></li>
+            <li><%= link_to 'Categories', [:admin, :categories], class: "nav-link" %></li>
           </ul>
         </li>
         <li class="nav-item end-0">
@@ -64,6 +65,19 @@
           My Cart (<%= cart.size %>) <% end %>
         </li>
       </ul>
+
+      <% if current_user %>
+        <div class="user-info">
+          <span class="user-greeting">Signed in as <%= current_user.firstname %></span>
+          <%= link_to "Logout", '/logout', class: "btn btn-primary btn-logout" %>
+        </div>
+      <% else %>
+        <div class="auth-links">
+          <%= link_to 'Login', '/login', class: "btn btn-primary btn-login" %>
+          <%= link_to 'Sign Up', '/signup', class: "btn btn-outline-primary btn-signup" %>
+        </div>
+      <% end %>
+
     </div>
   </div>
 </nav>
